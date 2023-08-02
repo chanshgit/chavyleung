@@ -47,7 +47,8 @@ function signapp() {
       body,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Cookie': $.VAL_cookies
+        'Cookie': $.VAL_cookies,
+        'User-Agent':'smzdm_android_V10.0 rv:866 (Redmi Note 3;Android10;zh)smzdmapp'
       }
     }
     $.post(url, (err, resp, data) => {
@@ -68,7 +69,7 @@ function getToken() {
 }
 
 function getAppSign(t) {
-  const sign = 'basic_v=0&f=android&time=' + t + '&v=10.0&weixin=0&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC'
+  const sign = 'basic_v=0&f=android&sk=1&time=' + t + '&token=' + getToken() + '&v=10.0&weixin=0&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC'
   return $.CryptoJS.MD5(sign).toString().toUpperCase()
 }
 
@@ -76,7 +77,7 @@ function getBody() {
   const t = new Date().getTime()
   const token = getToken()
   const sign = getAppSign(t)
-  return 'touchstone_event=&v=10.0&sign=' + sign + '&weixin=0&time=' + t + '&sk=1&token=' + token + '&f=android&captcha='
+  return 'basic_v=0&touchstone_event=&v=10.0&sign=' + sign + '&weixin=0&time=' + t + '&sk=1&token=' + token + '&f=android&captcha='
 }
 
 function showmsg() {
