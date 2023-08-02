@@ -68,7 +68,7 @@ function getToken() {
 }
 
 function getAppSign(t) {
-  const sign = 'f=android&sk=1&time=' + t + '&v=10.0&weixin=0&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC'
+  const sign = 'basic_v=0&f=android&time=' + t + '&v=10.0&weixin=0&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC'
   return $.CryptoJS.MD5(sign).toString().toUpperCase()
 }
 
